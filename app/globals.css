@@ -13,9 +13,9 @@ body {
 /* Sidebar */
 .sidebar {
   width: 240px;
-  background: #111827;
+  background: linear-gradient(180deg, #0f172a, #111827);
   color: white;
-  padding: 25px;
+  padding: 30px 25px;
   display: flex;
   flex-direction: column;
 }
@@ -37,14 +37,15 @@ body {
 
 .sidebar a {
   text-decoration: none;
-  color: white;
-  margin: 12px 0;
-  font-size: 16px;
-  transition: 0.3s;
+  color: #d1d5db;
+  margin: 14px 0;
+  font-size: 15px;
+  transition: all 0.2s ease;
 }
 
 .sidebar a:hover {
-  color: #facc15;
+  color: #ffffff;
+  padding-left: 6px;
 }
 
 /* Main Area */
