@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useState } from "react"
@@ -28,11 +29,8 @@ export default function CreateInvoice() {
   }, [])
 
   async function fetchData() {
-    const { data: customerData, error: cErr } = await supabase.from("customers").select("*")
-    const { data: productData, error: pErr } = await supabase.from("products").select("*")
-
-    if (cErr) console.log("Customer fetch error:", cErr)
-    if (pErr) console.log("Product fetch error:", pErr)
+    const { data: customerData } = await supabase.from("customers").select("*")
+    const { data: productData } = await supabase.from("products").select("*")
 
     setCustomers(customerData || [])
     setProducts(productData || [])
@@ -41,6 +39,7 @@ export default function CreateInvoice() {
   function addItem() {
 
     const product = products.find(p => p.id === selectedProduct)
+
     if (!product) {
       alert("Select product")
       return
@@ -86,16 +85,30 @@ export default function CreateInvoice() {
 
     setLoading(true)
 
-    const grandTotal = items.reduce((sum, item) => sum + item.total, 0)
+    const subtotal = items.reduce(
+      (sum, item) => sum + (item.price * item.quantity),
+      0
+    )
 
-    console.log("Grand Total:", grandTotal)
+    const totalGst = items.reduce(
+      (sum, item) => sum + item.gst_amount,
+      0
+    )
 
-    // Insert invoice
+    const grandTotal = subtotal + totalGst
+
+    const invoiceNumber = "INV-" + Date.now()
+
+    // 🔥 INSERT INVOICE (MATCHES YOUR TABLE STRUCTURE)
     const { data: invoiceData, error: invoiceError } = await supabase
       .from("invoices")
       .insert([
         {
+          invoice_number: invoiceNumber,
           customer_id: selectedCustomer,
+          gst_type: "GST",
+          subtotal: subtotal,
+          gst_amount: totalGst,
           total_amount: grandTotal
         }
       ])
@@ -109,8 +122,7 @@ export default function CreateInvoice() {
       return
     }
 
-    console.log("Invoice inserted:", invoiceData)
-
+    // 🔥 INSERT INVOICE ITEMS
     const itemsToInsert = items.map(item => ({
       invoice_id: invoiceData.id,
       product_id: item.product_id,
@@ -131,8 +143,6 @@ export default function CreateInvoice() {
       setLoading(false)
       return
     }
-
-    console.log("Invoice saved successfully")
 
     router.push(`/dashboard/invoices/${invoiceData.id}`)
   }
