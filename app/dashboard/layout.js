@@ -4,31 +4,35 @@ export default function DashboardLayout({ children }) {
 
       {/* Sidebar */}
       <div className="sidebar">
-     <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "10px" }}>
-  
-  <div style={{
-    width: "42px",
-    height: "42px",
-    background: "#facc15",
-    borderRadius: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: "bold",
-    color: "#111827",
-    fontSize: "18px"
-  }}>
-    AH
-  </div>
 
-  <div>
-    <h2 style={{ margin: 0 }}>Alok Harsh</h2>
-    <p style={{ fontSize: "12px", opacity: 0.6, margin: 0 }}>
-      Rice Mill Billing
-    </p>
-  </div>
+        {/* Brand Section */}
+        <div style={{ marginBottom: "35px" }}>
+          <h1 style={{
+            margin: 0,
+            fontSize: "22px",
+            fontWeight: "700",
+            letterSpacing: "0.6px"
+          }}>
+            Alok Harsh
+          </h1>
 
-</div>
+          <p style={{
+            margin: "5px 0 0 0",
+            fontSize: "13px",
+            color: "#9ca3af",
+            letterSpacing: "0.5px"
+          }}>
+            Rice Mill
+          </p>
+
+          <div style={{
+            width: "55px",
+            height: "3px",
+            background: "#facc15",
+            marginTop: "14px",
+            borderRadius: "5px"
+          }}></div>
+        </div>
 
         <hr className="divider" />
 
@@ -36,6 +40,7 @@ export default function DashboardLayout({ children }) {
         <a href="/dashboard/customers">Customers</a>
         <a href="/dashboard/products">Products</a>
         <a href="/dashboard/invoices">Invoices</a>
+
       </div>
 
       {/* Main Content */}
