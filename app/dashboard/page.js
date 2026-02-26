@@ -1,45 +1,37 @@
 export default function DashboardPage() {
   return (
     <div>
-      <div style={{ marginBottom: "40px" }}>
-        <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>
+
+      {/* Header Section */}
+      <div style={{ marginBottom: "50px" }}>
+        <h1 style={{ fontSize: "32px", fontWeight: "600" }}>
           Dashboard Overview
         </h1>
-        <p style={{ color: "#6b7280" }}>
+        <p style={{ color: "#6b7280", marginTop: "8px" }}>
           Welcome back! Here is your business summary.
         </p>
       </div>
 
-      <div className="card-container">
+      {/* Cards Section */}
+      <div style={{ display: "flex", gap: "30px" }}>
 
         <div className="card">
-          <p style={{ color: "#6b7280", fontSize: "14px" }}>
-            Total Sales
-          </p>
-          <h2 style={{ marginTop: "10px", fontSize: "26px" }}>
-            ₹ 0
-          </h2>
+          <p style={{ color: "#6b7280" }}>Total Sales</p>
+          <h2 style={{ marginTop: "10px" }}>₹ 0</h2>
         </div>
 
         <div className="card">
-          <p style={{ color: "#6b7280", fontSize: "14px" }}>
-            Total Customers
-          </p>
-          <h2 style={{ marginTop: "10px", fontSize: "26px" }}>
-            0
-          </h2>
+          <p style={{ color: "#6b7280" }}>Total Customers</p>
+          <h2 style={{ marginTop: "10px" }}>0</h2>
         </div>
 
         <div className="card">
-          <p style={{ color: "#6b7280", fontSize: "14px" }}>
-            Pending Dues
-          </p>
-          <h2 style={{ marginTop: "10px", fontSize: "26px" }}>
-            ₹ 0
-          </h2>
+          <p style={{ color: "#6b7280" }}>Pending Dues</p>
+          <h2 style={{ marginTop: "10px" }}>₹ 0</h2>
         </div>
 
       </div>
+
     </div>
   )
 }
