@@ -1,3 +1,4 @@
+import './globals.css'
 export const metadata = {
   title: "Alok Harsh Rice Mill",
   description: "Billing System",
