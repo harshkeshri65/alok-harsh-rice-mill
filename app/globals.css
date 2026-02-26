@@ -53,3 +53,22 @@ body {
   padding: 40px;
   background: #f4f6f8;
 }
+/* Dashboard Cards */
+.card-container {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  flex: 1;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
